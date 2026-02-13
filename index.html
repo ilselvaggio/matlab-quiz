@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MATLAB VO Quiz</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>MATLAB VO Vorbereitung</h1>
+            <p id="mode-description">Wähle deinen Modus</p>
+        </header>
+
+        <div id="start-screen" class="screen active">
+            <button class="btn" onclick="startQuiz('exam')">Simulierte Klausur (12 Fragen)</button>
+            <button class="btn" onclick="startQuiz('practice')">Übungsmodus (Sofortiges Feedback)</button>
+            <button class="btn" onclick="startQuiz('all')">Alle Fragen (Der Reihe nach)</button>
+            
+            <div class="settings">
+                <label for="question-count">Anzahl Fragen (für Klausur/Custom):</label>
+                <input type="number" id="question-count" value="12" min="1" max="100">
+            </div>
+        </div>
+
+        <div id="quiz-screen" class="screen">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill"></div>
+            </div>
+            <div class="stats">
+                <span id="question-number">Frage 1/10</span>
+                <span id="current-score" style="display:none;">Punkte: 0</span>
+            </div>
+            
+            <div id="question-container">
+                <h2 id="question-text">Frage lädt...</h2>
+                <div id="answer-options" class="options-grid">
+                    </div>
+                <div id="feedback" class="feedback"></div>
+            </div>
+
+            <div class="controls">
+                <button id="next-btn" class="btn secondary" onclick="nextQuestion()">Nächste Frage</button>
+                <button id="finish-btn" class="btn warning" onclick="finishQuiz()" style="display:none;">Abgeben</button>
+            </div>
+        </div>
+
+        <div id="result-screen" class="screen">
+            <h2>Ergebnis</h2>
+            <div class="score-display" id="final-score">0 / 0</div>
+            <p id="score-text"></p>
+            <div id="review-list" class="review-list"></div>
+            <button class="btn" onclick="location.reload()">Neustart</button>
+        </div>
+    </div>
+
+    <script src="questions.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

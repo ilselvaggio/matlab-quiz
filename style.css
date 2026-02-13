@@ -1,0 +1,107 @@
+:root {
+    --primary: #0072bd; /* Matlab Blue */
+    --primary-hover: #005a96;
+    --bg: #f4f4f4;
+    --card: #ffffff;
+    --text: #333;
+    --correct: #d4edda;
+    --correct-text: #155724;
+    --wrong: #f8d7da;
+    --wrong-text: #721c24;
+}
+
+* { box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+
+body {
+    background-color: var(--bg);
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+    color: var(--text);
+}
+
+.container {
+    width: 100%;
+    max-width: 800px;
+    background: var(--card);
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+@media(min-width: 600px) {
+    .container {
+        margin: 40px auto;
+        min-height: auto;
+        border-radius: 12px;
+    }
+}
+
+header { text-align: center; margin-bottom: 20px; }
+h1 { color: var(--primary); margin-bottom: 5px; }
+
+.screen { display: none; }
+.screen.active { display: block; }
+
+.btn {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    margin: 10px 0;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn:hover { background: var(--primary-hover); }
+.btn.secondary { background: #6c757d; }
+.btn.warning { background: #e0a800; }
+
+.settings { margin-top: 20px; text-align: center; }
+.settings input { padding: 8px; width: 60px; text-align: center; }
+
+/* Quiz Styles */
+.progress-bar { height: 6px; background: #ddd; border-radius: 3px; margin-bottom: 15px; overflow: hidden; }
+.progress-fill { height: 100%; background: var(--primary); width: 0%; transition: width 0.3s; }
+
+.stats { display: flex; justify-content: space-between; font-size: 0.9rem; color: #666; margin-bottom: 15px; }
+
+#question-text { font-size: 1.3rem; margin-bottom: 20px; line-height: 1.4; }
+code { background: #f0f0f0; padding: 2px 5px; border-radius: 4px; font-family: monospace; color: #d63384; }
+
+.options-grid { display: grid; gap: 10px; }
+
+.option {
+    padding: 15px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    cursor: pointer;
+    background: white;
+    display: flex;
+    align-items: center;
+}
+
+.option:hover { border-color: var(--primary); background: #f9fbfd; }
+.option.selected { border-color: var(--primary); background: #e7f1ff; font-weight: bold; }
+
+/* Feedback Styles */
+.option.correct { border-color: #28a745; background-color: var(--correct); color: var(--correct-text); }
+.option.incorrect { border-color: #dc3545; background-color: var(--wrong); color: var(--wrong-text); }
+
+.feedback { margin-top: 15px; padding: 10px; border-radius: 5px; font-weight: bold; display: none; }
+
+.controls { margin-top: 20px; display: flex; gap: 10px; }
+#next-btn, #finish-btn { display: none; } /* Hidden until answer checked in practice or always shown in exam? Handled by JS */
+
+/* Result Styles */
+.score-display { font-size: 3rem; font-weight: bold; text-align: center; color: var(--primary); margin: 20px 0; }
+.review-list { margin-top: 20px; border-top: 1px solid #eee; padding-top: 20px; }
+.review-item { margin-bottom: 15px; padding: 10px; background: #f9f9f9; border-left: 4px solid var(--wrong-text); }
+.review-item.good { border-left-color: var(--correct-text); }
